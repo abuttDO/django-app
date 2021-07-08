@@ -121,6 +121,7 @@ USE_TZ = True
 #STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# MEDIA URL IS FOR POINTING TO THE DATABASE SAVED FILES
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static")
 
