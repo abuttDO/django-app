@@ -154,10 +154,10 @@ MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
 #MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 ########### LINKEDIN TUTORIAL SITE CODE ################
-#STATICFILES_LOCATION = 'static'
+STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-#MEDIAFILES_LOCATION = 'media'
+MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 ########################################################
 
