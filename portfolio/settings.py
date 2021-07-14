@@ -123,14 +123,14 @@ USE_TZ = True
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # MEDIA URL IS FOR POINTING TO THE DATABASE SAVED FILES
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "static")
+##MEDIA_URL = '/media/'
+##MEDIA_ROOT = os.path.join(BASE_DIR, "static")
 
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+##STATIC_URL = "/static/"
+##STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+##STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+##STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ##### SPACES STORAGE CONFIGURATIONS
 AWS_ACCESS_KEY_ID = os.environ.get("SPACES_ACCESS_KEY")
@@ -141,12 +141,22 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'jobs/static'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'static')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+##STATICFILES_LOCATION = 'static'
+##STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
+##MEDIAFILES_LOCATION = 'media'
+##DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, 'jobs/media'),
+]
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
+MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 ###################################
 
 
