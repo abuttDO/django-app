@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jobs',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+##### SPACES STORAGE CONFIGURATIONS
+AWS_ACCESS_KEY_ID = os.environ.get("SPACES_ACCESS_KEY")
+AWS_SECRET_ACCESS_KEY = os.environ.get("SPACES_SECRET_KEY")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = os.environ.get("SPACES_ENDPOINT_URL")
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+###################################
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
