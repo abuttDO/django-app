@@ -136,7 +136,7 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.environ.get("SPACES_ACCESS_KEY")
 AWS_SECRET_ACCESS_KEY = os.environ.get("SPACES_SECRET_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME")
-AWS_S3_ENDPOINT_URL = os.environ.get("SPACES_ENDPOINT_URL")
+AWS_S3_ENDPOINT_URL = 'https://nyc3.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
