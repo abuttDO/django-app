@@ -25,6 +25,6 @@ urlpatterns = [
     path('', jobs.views.home, name='home'),
     path('jobs/<int:job_id>', jobs.views.detail, name='detail'),
 ] 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_STORAGE)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.DEFAULT_FILE_STORAGE)
 #urlpatterns += static(settings.STATICFILES_DIRS, document_root=settings.STATICFILES_STORAGE)
