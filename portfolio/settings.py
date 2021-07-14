@@ -141,22 +141,22 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'jobs/static'),
-]
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'static')
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'jobs/static'),
+#]
+#STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'static')
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-MEDIAFILES_DIRS = [
-    os.path.join(BASE_DIR, 'jobs/media'),
-]
-MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
-MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#MEDIAFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'jobs/media'),
+#]
+#MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
+#MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 ###################################
 
 
