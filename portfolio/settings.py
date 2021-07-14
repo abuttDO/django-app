@@ -143,21 +143,23 @@ AWS_S3_OBJECT_PARAMETERS = {
 ########### LINKEDIN TUTORIAL SITE CODE ################
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, STATICFILES_LOCATION)
+
 
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
 ########################################################
 
 #STATICFILES_DIRS = [
 #    os.path.join(BASE_DIR, 'jobs/static'),
 #]
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, STATICFILES_LOCATION)
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #MEDIAFILES_DIRS = [
 #    os.path.join(BASE_DIR, 'jobs/media'),
 #]
-MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
+
 #MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 ###################################
