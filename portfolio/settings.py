@@ -169,3 +169,4 @@ MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+### +======== CODE IS WORKING PERFECTLY TILL NOW ++======###
