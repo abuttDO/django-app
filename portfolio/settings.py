@@ -119,8 +119,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # MEDIA URL IS FOR POINTING TO THE DATABASE SAVED FILES
 ##MEDIA_URL = '/media/'
@@ -141,9 +141,9 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 ########### LINKEDIN TUTORIAL SITE CODE ################
-#STATICFILES_LOCATION = 'static'
-#STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-#STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, STATICFILES_LOCATION)
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, STATICFILES_LOCATION)
 
 
 MEDIAFILES_LOCATION = 'media'
