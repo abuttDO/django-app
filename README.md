@@ -14,9 +14,8 @@ There are a few key steps to make this work:
 
 Create a virtual environment, install dependencies, and migrate. Assumes you've got a `DATABASE_URL` in your environment variables.
 
-``
+
     $ virtualenv -p python3.10 env
     $ source env/bin/activate
     $ pip install -r requirements
     $ python manage.py migrate
-``
