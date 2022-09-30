@@ -16,10 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import jobs.views
-import os
-from django.conf import settings
-from django.conf.urls.static import static
-from storages.backends.s3boto3 import S3Boto3Storage
 
 
 urlpatterns = [
@@ -27,6 +23,3 @@ urlpatterns = [
     path('', jobs.views.home, name='home'),
     path('jobs/<int:job_id>', jobs.views.detail, name='detail'),
 ] 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_LOCATION)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIAFILES_LOCATION)
-#urlpatterns += static(settings.STATICFILES_DIRS, document_root=settings.STATICFILES_STORAGE)
