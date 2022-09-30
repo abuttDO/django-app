@@ -27,10 +27,10 @@ Then, set up your Spaces bucket in digital ocean.
 3. Give it a name that makes sense for what's in your space
 4. When it's created, go back to Spaces and click `Manage Keys`
 5. Under "Spaces access keys" click the button to `Generate New Key`
-6. Give it a name. When it's generated, *BE SURE* to copy the secret and the access key.
+6. Give it a name. When it's generated, **BE SURE** to copy the secret and the access key.
 7. You should now have the information to create 4 environment variables:
     1. `SPACES_ACCESS_KEY`
-    2. `SPACES_SECRET_KEY` this is only shown *once* when you create your keys
+    2. `SPACES_SECRET_KEY` this is only shown **once** when you create your keys
     3. `SPACES_BUCKET` this is the friendly name you gave your bucket in step #3 above
     4. `SPACES_REGION_NAME` you should see this in your spaces url, something like `nyc3` as part of `bucket-name.nyc3.digitaloceanspaces.com`
 8. Once those environment variables are in, your custom backend is effectively configured.
