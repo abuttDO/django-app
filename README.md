@@ -20,7 +20,7 @@ Create a virtual environment, install dependencies, and migrate. Assumes you've 
     $ pip install -r requirements
     $ python manage.py migrate
 
-Then, set up your Spaces bucket in digital ocean.
+## Next, step up your Spaces on Digital Ocean
 
 1. Create a new space (also called a bucket)
 2. Choose a region close to where most of your users are, I chose NYC 3
