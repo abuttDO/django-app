@@ -136,19 +136,20 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.environ.get("SPACES_ACCESS_KEY")
 AWS_SECRET_ACCESS_KEY = os.environ.get("SPACES_SECRET_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME")
-AWS_S3_ENDPOINT_URL = 'https://nyc3.digitaloceanspaces.com'
+AWS_REGION_NAME = os.environ.get("SPACES_REGION")  # something like "nyc3"
+AWS_S3_ENDPOINT_URL = 'https://%s.digitaloceanspaces.com' % AWS_REGION_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 ########### LINKEDIN TUTORIAL SITE CODE ################
 STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_STORAGE = 'portfolio.custom_storages.StaticStorage'
 STATIC_URL = '%s/%s/' % (AWS_S3_ENDPOINT_URL, STATICFILES_LOCATION)
 
 
 MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
+DEFAULT_FILE_STORAGE = 'portfolio.custom_storages.MediaStorage'
+MEDIA_URL = '%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
 ########################################################
 
 #STATICFILES_DIRS = [
@@ -169,3 +170,8 @@ MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

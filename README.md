@@ -9,3 +9,14 @@ There are a few key steps to make this work:
 3. You've got the access key, the secret, the bucket name, and the region from the space
 4. Boto and a lightweight custom storage make it all work in the background.
 
+
+## Getting started with this repo
+
+Create a virtual environment, install dependencies, and migrate. Assumes you've got a `DATABASE_URL` in your environment variables.
+
+``
+    $ virtualenv -p python3.10 env
+    $ source env/bin/activate
+    $ pip install -r requirements
+    $ python manage.py migrate
+``
