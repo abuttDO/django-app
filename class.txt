@@ -1,0 +1,8 @@
+Crimson
+Orange
+Blue
+Cyan
+Yellow
+Brown
+Coral
+Silver
