@@ -1,0 +1,97 @@
+databases:
+- cluster_name: portfolio-ahmed
+  db_name: defaultdb
+  db_user: doadmin
+  engine: PG
+  name: portfolio-ahmed
+  production: true
+  version: "12"
+domains:
+- domain: yes.ahmedwill.cyou
+  type: PRIMARY
+  zone: ahmedwill.cyou
+- domain: www.yes.ahmedwill.cyou
+  type: ALIAS
+  zone: ahmedwill.cyou
+egress:
+  type: DEDICATED_IP
+envs:
+- key: DISABLE_COLLECTSTATIC
+  scope: RUN_AND_BUILD_TIME
+  value: "1"
+- key: Backend_private_URL
+  scope: RUN_AND_BUILD_TIME
+  value: ${django-app-portfolio.PRIVATE_URL}
+- key: Backend_public_URL
+  scope: RUN_AND_BUILD_TIME
+  value: ${django-app-portfolio.PUBLIC_URL}
+- key: frontend_public_URL
+  scope: RUN_AND_BUILD_TIME
+  value: ${django-app-portfolio-static.PUBLIC_URL}
+- key: next_public_URL
+  scope: RUN_AND_BUILD_TIME
+  value: ${sample-nextjs.PUBLIC_URL}
+- key: domain
+  scope: RUN_AND_BUILD_TIME
+  value: ${APP_DOMAIN}
+- key: url
+  scope: RUN_AND_BUILD_TIME
+  value: ${APP_URL}
+features:
+- buildpack-stack=ubuntu-18
+ingress:
+  rules:
+  - component:
+      name: django-app-portfolio-static
+    match:
+      path:
+        prefix: /static
+  - component:
+      name: django-app-portfolio
+    match:
+      path:
+        prefix: /
+name: django-app-portfolio
+region: nyc
+services:
+- autoscaling:
+    max_instance_count: 3
+    metrics:
+      cpu:
+        percent: 5
+    min_instance_count: 2
+  environment_slug: python
+  envs:
+  - key: DJANGO_ALLOWED_HOSTS
+    scope: RUN_AND_BUILD_TIME
+    value: ${APP_DOMAIN},www.yes.ahmedwill.cyou,django-app-portfolio-raklh.ondigitalocean.app
+  - key: Backend_public_URL
+    scope: RUN_AND_BUILD_TIME
+    value: ${django-app-portfolio.PUBLIC_URL}
+  - key: frontend_public_URL
+    scope: RUN_AND_BUILD_TIME
+    value: ${django-app-portfolio-static.PUBLIC_URL}
+  - key: next_public_URL
+    scope: RUN_AND_BUILD_TIME
+    value: ${sample-nextjs.PUBLIC_URL}
+  - key: DATABASE_URL
+    scope: RUN_TIME
+    value: ${portfolio-ahmed.DATABASE_URL}
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: abuttDO/django-app
+  http_port: 80
+  instance_size_slug: professional-1l
+  name: django-app-portfolio
+  run_command: gunicorn --worker-tmp-dir /dev/shm portfolio.wsgi
+  source_dir: /
+static_sites:
+- environment_slug: python
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: abuttDO/django-app
+  name: django-app-portfolio-static
+  output_dir: static
+  source_dir: /
