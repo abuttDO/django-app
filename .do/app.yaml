@@ -15,28 +15,6 @@ domains:
   zone: ahmedwill.cyou
 egress:
   type: DEDICATED_IP
-envs:
-- key: DISABLE_COLLECTSTATIC
-  scope: RUN_AND_BUILD_TIME
-  value: "1"
-- key: Backend_private_URL
-  scope: RUN_AND_BUILD_TIME
-  value: ${django-app-portfolio.PRIVATE_URL}
-- key: Backend_public_URL
-  scope: RUN_AND_BUILD_TIME
-  value: ${django-app-portfolio.PUBLIC_URL}
-- key: frontend_public_URL
-  scope: RUN_AND_BUILD_TIME
-  value: ${django-app-portfolio-static.PUBLIC_URL}
-- key: next_public_URL
-  scope: RUN_AND_BUILD_TIME
-  value: ${sample-nextjs.PUBLIC_URL}
-- key: domain
-  scope: RUN_AND_BUILD_TIME
-  value: ${APP_DOMAIN}
-- key: url
-  scope: RUN_AND_BUILD_TIME
-  value: ${APP_URL}
 features:
 - buildpack-stack=ubuntu-18
 ingress:
@@ -61,22 +39,6 @@ services:
         percent: 5
     min_instance_count: 2
   environment_slug: python
-  envs:
-  - key: DJANGO_ALLOWED_HOSTS
-    scope: RUN_AND_BUILD_TIME
-    value: ${APP_DOMAIN},www.yes.ahmedwill.cyou,django-app-portfolio-raklh.ondigitalocean.app
-  - key: Backend_public_URL
-    scope: RUN_AND_BUILD_TIME
-    value: ${django-app-portfolio.PUBLIC_URL}
-  - key: frontend_public_URL
-    scope: RUN_AND_BUILD_TIME
-    value: ${django-app-portfolio-static.PUBLIC_URL}
-  - key: next_public_URL
-    scope: RUN_AND_BUILD_TIME
-    value: ${sample-nextjs.PUBLIC_URL}
-  - key: DATABASE_URL
-    scope: RUN_TIME
-    value: ${portfolio-ahmed.DATABASE_URL}
   github:
     branch: master
     deploy_on_push: true
